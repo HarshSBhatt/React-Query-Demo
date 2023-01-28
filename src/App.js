@@ -6,16 +6,14 @@ import { SuperHeroesPage } from "./components/SuperHeroes.page";
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="super-heroes" element={<SuperHeroesPage />} />
-          <Route path="rq-super-heroes" element={<RQSuperHeroesPage />} />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="super-heroes" element={<SuperHeroesPage />} />
+        <Route path="rq-super-heroes" element={<RQSuperHeroesPage />} />
+        <Route path="*" element={<NoMatch />} />
+      </Route>
+    </Routes>
   );
 }
 
