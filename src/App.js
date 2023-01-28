@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
+import { HomePage } from "./components/Home.page";
+import { RQSuperHeroesPage } from "./components/RQSuperHeroes.page";
+import { SuperHeroesPage } from "./components/SuperHeroes.page";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="super-heroes" element={<SuperHeroesPage />} />
+          <Route path="rq-super-heroes" element={<RQSuperHeroesPage />} />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+function Layout() {
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/super-heroes">Super Heroes</Link>
+          </li>
+          <li>
+            <Link to="/rq-super-heroes">RQ Super Heroes</Link>
+          </li>
+        </ul>
+      </nav>
+      <hr />
+      <Outlet />
+    </div>
+  );
+}
+
+function NoMatch() {
+  return (
+    <div>
+      <h2>Nothing to see here!</h2>
+      <p>
+        <Link to="/">Go to the home page</Link>
+      </p>
     </div>
   );
 }
